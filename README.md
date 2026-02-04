@@ -16,7 +16,7 @@
 ## ⚡ 快速开始
 ### 1. 克隆仓库
 ```bash
-git clone https://github.com/你的用户名/cf-bypass-crawler-pro.git
+git clone https://github.com/nehciuruil/cf-bypass-crawler-pro.git
 cd cf-bypass-crawler-pro
 ```
 
