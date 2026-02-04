@@ -17,7 +17,7 @@ pip install -r requirements.txt
 
 ### 3. 安装Playwright驱动（必须）
 ```bash
-playwright install chrome
+playwright install Chromium
 ```
 
 ### 4. 配置代理（可选，强烈推荐）
