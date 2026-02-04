@@ -2,7 +2,7 @@
 import random
 from pathlib import Path
 from playwright.async_api import async_playwright, Browser, BrowserContext, Page
-from playwright_stealth import stealth_async
+from playwright_stealth import stealth
 from config import HEADLESS, VIEWPORT, UA_POOL
 from core.proxy import ProxyPool
 import logging
@@ -73,7 +73,7 @@ class BrowserCore:
     async def new_page(self) -> Page:
         """创建新页面并应用Stealth，双重防检测"""
         page = await self.context.new_page()
-        await stealth_async(page)
+        await stealth(page)
         # 设置标准请求头，模拟真实浏览器
         await page.set_extra_http_headers({
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
