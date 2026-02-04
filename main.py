@@ -18,8 +18,14 @@ from core.browser import BrowserCore
 if os.name == "nt" and WIN_ENCODING_FIX:
     sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf-8', buffering=1)
     sys.stderr = open(sys.stderr.fileno(), mode='w', encoding='utf-8', buffering=1)
+    # 兼容Python 3.14+的异步事件循环配置（消除弃用警告，纯空格缩进）
     if sys.platform == 'win32':
-        asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+        try:
+            # 优先使用新版策略，无则降级（统一4个空格缩进）
+            asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+        except (AttributeError, DeprecationWarning):
+            # 兼容旧版本（同样4个空格缩进）
+            asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
 # ==================== 日志配置 ====================
 def setup_logger():
