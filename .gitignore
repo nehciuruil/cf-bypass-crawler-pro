@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 数据
+cookies/
+proxies.txt.local
+cf_bypassed.html
+
+# Playwright
+ms-playwright/
+.chromium/
+
+# 系统
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# 虚拟环境
+venv/
+env/
+.venv/
