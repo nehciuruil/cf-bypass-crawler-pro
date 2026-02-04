@@ -6,7 +6,7 @@
 ## 快速部署
 ### 1. 克隆/下载项目
 ```bash
-git clone https://github.com/your-name/cf-bypass-crawler-pro.git
+git clone https://github.com/nehciuruil/cf-bypass-crawler-pro.git
 cd cf-bypass-crawler-pro
 ```
 
