@@ -18,7 +18,8 @@ from core.browser import BrowserCore
 if os.name == "nt" and WIN_ENCODING_FIX:
     sys.stdout = open(sys.stdout.fileno(), mode='w', encoding='utf-8', buffering=1)
     sys.stderr = open(sys.stderr.fileno(), mode='w', encoding='utf-8', buffering=1)
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    if sys.platform == 'win32':
+        asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
 
 # ==================== 日志配置 ====================
 def setup_logger():
