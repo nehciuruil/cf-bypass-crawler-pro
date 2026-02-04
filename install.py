@@ -5,14 +5,20 @@ import subprocess
 import sys
 
 def run_command(cmd: list, desc: str):
-    """执行命令并处理异常"""
-    print(f"\n【{desc}】")
     try:
-        subprocess.check_call(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, encoding="utf-8")
+        subprocess.check_call(
+            cmd, 
+            stdout=subprocess.PIPE, 
+            stderr=subprocess.STDOUT, 
+            encoding="utf-8"
+        )
         print(f"✅ {desc}成功")
     except subprocess.CalledProcessError as e:
-        print(f"❌ {desc}失败：{e.output[:500]}")
-        sys.exit(1)
+        # 修复TypeError：兼容output为None的情况
+        output = e.output[:500] if e.output else "无详细输出"
+        print(f"❌ {desc}失败：{output}")
+        raise  # 抛出异常终止安装，避免静默失败
+
 
 def main():
     # 中文编码适配
